@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AVINASH REDDY CHAPPIDI - Portfolio</title>
+  <style>
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    :root {
+      --color-primary: #4a90e2;
+      --color-secondary: #50e3c2;
+      --color-bg: #121212;
+      --color-bg-alt: #1e1e1e;
+      --color-text: #e0e0e0;
+      --color-text-secondary: #a0a0a0;
+      --border-radius: 12px;
+      --transition: 0.3s ease;
+    }
+
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    a:hover,
+    a:focus {
+      color: var(--color-secondary);
+      outline: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--color-bg-alt);
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid #333;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: 1.5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-secondary);
+      transition: width var(--transition);
+      border-radius: 2px;
+    }
+
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+
+    main {
+      flex: 1;
+      max-width: 960px;
+      padding: 3rem 1.5rem;
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid #333;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      color: var(--color-primary);
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--color-text-secondary);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      white-space: pre-wrap;
+    }
+
+    /* Skills Section */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .skill-item {
+      background: var(--color-bg-alt);
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+      transition: background var(--transition);
+      cursor: default;
+    }
+    .skill-item:hover,
+    .skill-item:focus {
+      background: var(--color-primary);
+      color: var(--color-bg);
+      outline: none;
+    }
+
+    /* Projects Section */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--color-bg-alt);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 12px rgba(74, 144, 226, 0.7);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+    .project-card:hover,
+    .project-card:focus-within {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(74, 144, 226, 0.6);
+      outline: none;
+    }
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-secondary);
+      margin-bottom: 0.75rem;
+    }
+    .project-desc {
+      flex-grow: 1;
+      color: var(--color-text-secondary);
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .project-link {
+      margin-top: 1rem;
+      text-align: right;
+    }
+    .project-link a {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: var(--color-primary);
+      color: var(--color-bg);
+      font-weight: 700;
+      transition: background var(--transition);
+      display: inline-block;
+    }
+    .project-link a:hover,
+    .project-link a:focus {
+      background: var(--color-secondary);
+      outline: none;
+    }
+
+    /* Contact Section */
+    .contact {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+    }
+    .contact a {
+      color: var(--color-primary);
+      font-weight: 700;
+      margin: 0 0.5rem;
+    }
+    .contact a:hover,
+    .contact a:focus {
+      color: var(--color-secondary);
+      outline: none;
+    }
+
+    /* Responsive Header Nav Hamburger */
+    @media (max-width: 767px) {
+      nav {
+        display: none;
+      }
+      .mobile-nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--color-primary);
+        font-size: 2rem;
+        cursor: pointer;
+      }
+    }
+    @media (min-width: 768px) {
+      .mobile-nav-toggle {
+        display: none;
+      }
+    }
+  </style>
+  <script src="https://fonts.googleapis.com/icon?family=Material+Icons"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">AVINASH REDDY CHAPPIDI</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="hero" tabindex="-1">
+      <h1>AVINASH REDDY CHAPPIDI</h1>
+      <p>🎓 EE student | 💻 Problem Solver | ⚙️ Java, Python | 🚀 Building DSA & DevProjects 📈 Learning Full-Stack | 🤝 Let's connect: <a href="mailto:cavinashreddy2005@gmail.com">cavinashreddy2005@gmail.com</a></p>
+    </section>
+
+    <section id="skills" tabindex="-1">
+      <h2 style="text-align:center; color: var(--color-primary); font-weight: 800;">Skills</h2>
+      <div class="skills-list" role="list">
+        <div class="skill-item" role="listitem" tabindex="0">JAVA</div>
+        <div class="skill-item" role="listitem" tabindex="0">PYTHON</div>
+        <div class="skill-item" role="listitem" tabindex="0">C</div>
+        <div class="skill-item" role="listitem" tabindex="0">DSA</div>
+        <div class="skill-item" role="listitem" tabindex="0">Problem Solving</div>
+      </div>
+    </section>
+
+    <section id="projects" tabindex="-1">
+      <h2 style="text-align:center; color: var(--color-primary); font-weight: 800;">Projects</h2>
+      <div class="project-grid">
+        <article class="project-card" tabindex="0" aria-label="To-Do List">
+          <h3 class="project-title">To-Do List</h3>
+          <p class="project-desc">A task management application built using Python's Tkinter GUI.</p>
+          <div class="project-link">
+            <a href="https://github.com/avinash-reddy-2005/todo-list-gui-python" target="_blank" rel="noopener noreferrer" aria-label="Open To-Do List on GitHub">View on GitHub</a>
+          </div>
+        </article>
+        <article class="project-card" tabindex="0" aria-label="Password Generator">
+          <h3 class="project-title">Password Generator</h3>
+          <p class="project-desc">A tool to generate secure passwords using Python.</p>
+          <div class="project-link">
+            <a href="https://github.com/avinash-reddy-2005/password-generator-python" target="_blank" rel="noopener noreferrer" aria-label="Open Password Generator on GitHub">View on GitHub</a>
+          </div>
+        </article>
+        <article class="project-card" tabindex="0" aria-label="Digital Clock">
+          <h3 class="project-title">Digital Clock</h3>
+          <p class="project-desc">A digital clock application built using Python's Tkinter GUI.</p>
+          <div class="project-link">
+            <a href="https://github.com/avinash-reddy-2005/Digital-clock-gui-python" target="_blank" rel="noopener noreferrer" aria-label="Open Digital Clock on GitHub">View on GitHub</a>
+          </div>
+        </article>
+        <article class="project-card" tabindex="0" aria-label="Calculator">
+          <h3 class="project-title">Calculator</h3>
+          <p class="project-desc">A simple calculator application built using Python's Tkinter GUI.</p>
+          <div class="project-link">
+            <a href="https://github.com/avinash-reddy-2005/Calculator-gui-python" target="_blank" rel="noopener noreferrer" aria-label="Open Calculator on GitHub">View on GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" tabindex="-1">
+      <h2 style="color: var(--color-primary); font-weight: 800;">Contact Me</h2>
+      <p>You can reach me via email or social media:</p>
+      <p>
+        <a href="mailto:cavinashreddy2005@gmail.com" aria-label="Send email">cavinashreddy2005@gmail.com</a> |
+        <a href="https://linkedin.com/in/avinashreddychappidi/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile">LinkedIn</a> |
+        <a href="https://github.com/avinash-reddy-2005" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile">GitHub</a> |
+        <a href="https://leetcode.com/u/avinash-reddy-2005/" target="_blank" rel="noopener noreferrer" aria-label="Open LeetCode profile">LeetCode</a>
+      </p>
+    </section>
+
+    <section id="education" tabindex="-1">
+      <h2 style="color: var(--color-primary); font-weight: 800;">Education</h2>
+      <p>B. Tech ECE, CGPA: 9.03, Annamacharya Institute of Technology and Sciences, Rajampet</p>
+      <p>Intermediate MPC: 89.8%</p>
+      <p>SSC 10th: 92.3%</p>
+    </section>
+
+    <section id="certifications" tabindex="-1">
+      <h2 style="color: var(--color-primary); font-weight: 800;">Certifications & Achievements</h2>
+      <ul>
+        <li>Advanced Data Science [Internship by APSSDC Indo-Euro Synchronization]</li>
+        <li>Python Certification by Learntube</li>
+        <li>Autoboots Workshop by Technotron with Gold Badge</li>
+        <li>Introduction to Internet of Things by NPTEL</li>
+        <li>Introduction to Industry 4.0 and Industrial Internet of Things by NPTEL</li>
+      </ul>
+    </section>
+
+    <section id="extracurricular" tabindex="-1">
+      <h2 style="color: var(--color-primary); font-weight: 800;">Extracurricular & Interests</h2>
+      <p>College Volleyball Team Player, Open Source Contributor (Beginner)</p>
+    </section>
+  </main>
+
+</body>
+</html>
